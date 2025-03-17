@@ -14,24 +14,20 @@ import java.util.List;
 public class MoveTargetElementToEndNotPreservingOrder {
 
     public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
-
         int start = 0;
         int end = array.size() - 1;
         while(start < end) {
-            if(array.get(start) == toMove) {
-                if(array.get(end) == toMove) {
-                    end--; //Just reduce the end index as no other action is possible
-                } else { //Swap
-                    array.set(start, array.get(end));
-                    array.set(end, toMove);
-                    start++;
-                    end--;
-                }
-            } else {
+            if(array.get(start) != toMove) {
                 start++;
+            } else if(array.get(end) == toMove) {
+                end--;
+            } else {
+                array.set(start, array.get(end));
+                array.set(end, toMove);
+                start++;
+                end--;
             }
         }
-
         return array;
     }
 
