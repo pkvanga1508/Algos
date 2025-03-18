@@ -22,4 +22,24 @@ public class RemoveDuplicates {
         }
         return pivot + 1;
     }
+
+    //Approach 2
+    public int removeDuplicatesApproach2(int[] nums) {
+
+        if(nums.length <= 1) return nums.length;
+
+        int pivot = 1;
+        int next = 1;
+
+        while(next < nums.length) {
+            if(nums[next] != nums[pivot -1]) {
+                nums[pivot] = nums[next];
+                pivot++;
+
+            }
+            next++;
+        }
+        return pivot;
+    }
+
 }
